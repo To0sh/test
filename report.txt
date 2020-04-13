@@ -1,0 +1,13 @@
+1 часть задания
+
+1.Устаревшая ссылка на Selenium server - скачал последнюю стабильную версию отсюда https://www.selenium.dev/downloads/.
+2.Устаревшая ссылка на ChromeDriver - скачал версию 81 (81.0.4044.92 версия браузера) отсюда https://chromedriver.chromium.org/downloads.
+3.UnhandledPromiseRejectionWarning: NoSuchSessionError: invalid session id.
+4.Класс b-form-button__input отсутствует. Прицепился к классу button_theme_websearch.
+5.Обернул коллбэк в обработчике then в async-await.
+6.Тест успешно выполняется лишь со второй попытки.
+7.Добавил catch после блока then.
+8.Тест не выполняется потому, что сначала в title строка "Яндекс", а лишь затем меняется на "test — Яндекс: нашлось".
+9.Проблема как отследить полную загрузку страницы. 
+10.Добавил строку await client.wait(wd.until.titleContains('Яндекс'), 1000); - как я понял, скрипт ждёт и не выполняет до того момента, пока в title есть 'Яндекс'.
+11.Теперь тесты проходят успешно.
