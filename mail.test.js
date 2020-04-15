@@ -35,6 +35,7 @@ let driver =  new Builder()
         await driver.findElement(By.className('HeadBanner-Button-Enter')).click();
         await driver.findElement(By.name('login')).sendKeys(email, Key.ENTER);
         await driver.wait(until.elementLocated(By.name('passwd')), 5000);
+        await driver.findElement(By.className('passp-form-field__label')).click();
         await driver.findElement(By.name('passwd')).sendKeys(password, Key.ENTER);
 
         await driver.wait(until.elementLocated(By.className('mail-ComposeButton')), 5000);
@@ -54,13 +55,48 @@ let driver =  new Builder()
         await sleep(3000);
 
         let sentMessages = await driver.findElements(By.className('ns-view-messages-item-wrap'));
-        let firstSendMessage = await sentMessages[0];
-        await firstSendMessage.click();
-        await firstSendMessage.findElement(By.className())
+        let firstSendMessageWrapper = await sentMessages[0];
+        await firstSendMessageWrapper.click();
+        await driver.wait(until.elementLocated(By.className('ns-view-messages-item-thread')), 5000);
+        let threadWrapper =  await firstSendMessageWrapper.findElement(By.className('ns-view-messages-item-thread'));
+        let threadMessages = await threadWrapper.findElements(By.css('.ns-view-messages-item-wrap'));
+        await threadMessages[1].click();
 
+        await driver.wait(until.elementLocated(By.className('mail-Message-Body-Content')), 5000);
+        let messageBody = await driver.findElement(By.className('mail-Message-Body-Content'));
+        let text = await messageBody.getText().then(text => text);
+
+        await assert.ok(text === message, 'Текст не совпадает!');
+
+        await driver.findElement(By.className('mail-FolderList-Item_inbox')).click();
+
+        await sleep(5000);
+
+        await driver.navigate().refresh();
+
+        await driver.wait(until.elementLocated(By.className('ns-view-messages-item-wrap')), 5000);
+        let incomingMessages = await driver.findElements(By.className('ns-view-messages-item-wrap'));
+
+        let firstIncomingMessageWrapper = await incomingMessages[0];
+        await firstIncomingMessageWrapper.click();
+        await driver.wait(until.elementLocated(By.className('ns-view-messages-item-thread')), 5000);
+        let threadIncomingWrapper =  await firstIncomingMessageWrapper.findElement(By.className('ns-view-messages-item-thread'));
+        let threadIncomingMessages = await threadIncomingWrapper.findElements(By.css('.ns-view-messages-item-wrap'));
+        await threadIncomingMessages[0].click();
+
+        await driver.wait(until.elementLocated(By.className('mail-Message-Body-Content')), 5000);
+        let incomingMessageBody = await driver.findElement(By.className('mail-Message-Body-Content'));
+        let incomingText = await incomingMessageBody.getText().then(text => text);
+
+        await assert.ok(incomingText === message, 'Текст не совпадает!');
+
+        await console.log('Test is done!');
+
+        await sleep(1000);
+
+        await driver.quit();
     } catch (e) {
-        console.log(e.message);
-    } finally {
-
+        await console.log('Error! -> ' + e.message);
+        await driver.quit();
     }
 })();
