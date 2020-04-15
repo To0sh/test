@@ -11,3 +11,12 @@
 9.Проблема как отследить полную загрузку страницы. 
 10.Добавил строку await client.wait(wd.until.titleContains('Яндекс'), 1000); - как я понял, скрипт ждёт и не выполняет до того момента, пока в title есть 'Яндекс'.
 11.Теперь тесты проходят успешно.
+
+
+
+2 часть задания
+
+1.For multiple reasons, logging into sites like Gmail and Facebook using WebDriver is not recommended.
+ Aside from being against the usage terms for these sites (where you risk having the account shut down),
+ it is slow and unreliable. - выдержка из документации - https://www.selenium.dev/documentation/en/worst_practices/gmail_email_and_facebook_logins/
+Распространяется ли это на Yandex?

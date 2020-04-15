@@ -1,0 +1,17 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Тестовое задание",
+  "main": "mail.test.js",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "selenium-server": "java -jar ../selenium-server-standalone-3.141.59.jar",
+    "test": "node test.js",
+    "mail-test": "node mail.test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
