@@ -16,8 +16,8 @@ chromeCapabilities.set('chromeOptions', chromeOptions);
 
 const url = 'https://mail.yandex.ru/',
       seleniumHost = 'http://localhost:4444/wd/hub',
-      email = 'sergey@nabiullin.com',
-      password = 'sorrowkill',
+      email = 'Your email',
+      password = 'Your password',
       subject = 'Test',
       message = 'Test message';
 
