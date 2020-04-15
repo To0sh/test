@@ -20,3 +20,5 @@
  Aside from being against the usage terms for these sites (where you risk having the account shut down),
  it is slow and unreliable. - выдержка из документации - https://www.selenium.dev/documentation/en/worst_practices/gmail_email_and_facebook_logins/
 Распространяется ли это на Yandex?
+2.Добавил пока что минимальный функицонал. Для проверки, конечно, нужно чтобы была добавлена дополнительная почта, чтобы не всплывало окно с её добавлением.
+3.Появляется всплывающее окно с разрешением показа уведомлений. Я буду его закрывать.
